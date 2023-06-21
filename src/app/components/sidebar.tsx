@@ -8,7 +8,6 @@ import {
   Box,
   Divider,
   LinkBox,
-  LinkOverlay,
 } from "@chakra-ui/layout";
 import {
   MdHome,
@@ -107,25 +106,23 @@ const Sidebar = () => {
           </List>
         </Box>
         <Divider />
-        <Box height="66%" overflowY="auto" paddingY="20px">
-          <List spacing={3}>
-            {playlists.map((playlist) => (
-              <ListItem
-                key={playlist}
-                fontSize="20px"
-                fontWeight="600"
-                paddingY="10px"
-                paddingX="20px"
-              >
-                <LinkBox>
-                  <LinkOverlay href={`/playlist/${playlist}`}>
-                    {playlist}
-                  </LinkOverlay>
-                </LinkBox>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
+      </Box>
+      <Box height="66%" overflowY="auto" overflowX="hidden" paddingY="20px">
+        <List spacing={3}>
+          {playlists.map((playlist) => (
+            <ListItem
+              key={playlist}
+              fontSize="20px"
+              fontWeight="600"
+              paddingY="10px"
+              paddingX="20px"
+            >
+              <LinkBox>
+                <Link href={`/playlist/${playlist}`}>{playlist}</Link>
+              </LinkBox>
+            </ListItem>
+          ))}
+        </List>
       </Box>
     </Box>
   );
