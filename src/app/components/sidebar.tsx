@@ -17,7 +17,15 @@ import {
   MdFavorite,
 } from "react-icons/md";
 
-const sidebarItems = [
+import { IconType } from "react-icons";
+
+interface IMenuItem {
+  icon: IconType;
+  text: string;
+  route: string;
+}
+
+const sidebarItems: IMenuItem[] = [
   {
     icon: MdHome,
     text: "Home",
@@ -35,14 +43,14 @@ const sidebarItems = [
   },
 ];
 
-const musicMenuItems = [
+const musicMenuItems: IMenuItem[] = [
   {
-    name: "New Playlist",
+    text: "New Playlist",
     icon: MdPlaylistAdd,
     route: "/new-playlist",
   },
   {
-    name: "Favourites",
+    text: "Favourites",
     icon: MdFavorite,
     route: "/favourites",
   },
@@ -91,7 +99,7 @@ const Sidebar = () => {
           <List spacing={3}>
             {musicMenuItems.map((item) => (
               <ListItem
-                key={item.name}
+                key={item.text}
                 fontSize="20px"
                 fontWeight="600"
                 paddingY="10px"
@@ -99,7 +107,7 @@ const Sidebar = () => {
               >
                 <Link href={item.route}>
                   <ListIcon as={item.icon} color="white" marginRight="20px" />
-                  {item.name}
+                  {item.text}
                 </Link>
               </ListItem>
             ))}
